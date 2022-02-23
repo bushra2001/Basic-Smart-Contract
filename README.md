@@ -62,9 +62,7 @@ Open the metamask extension to find your private key. Donot share your private k
 - Install [VScode](https://code.visualstudio.com/)
 
 Open terminal and run following commands.
-
-
-
+```
  mkdir Hello-World
  
  cd Hello-World
@@ -76,8 +74,7 @@ Open terminal and run following commands.
  npm install --save-dev hardhat
  
  npx hardhat
-
-
+```
 
 When you run the last command, you will get an option to create an Empty project with hardhat config. 
 copy the code
@@ -87,7 +84,7 @@ Creating Directories for Code
 Now we will create two directories, contracts, scripts.
 
 The contracts directory will have all the contracts for the project and scripts directory will have all the deployments scripts and other stuff related to the project. By now the structure of your project will look something like this.
-
+```
 HelloWorld
 
 > contracts
@@ -101,12 +98,12 @@ hardhat.config.js
 package-lock.json
 
 Package.json
-
+```
 The contracts directory will have the contract of your Hello World. Create a HelloWorld.sol file in the contracts folder and write the following code. 
 
 
  
- 
+ ```
     contract HelloWorld {
     
     //events
@@ -128,7 +125,7 @@ The contracts directory will have the contract of your Hello World. Create a Hel
         emit messagechanged(oldmsg, newmesssage);
  
     }}
-    
+   ``` 
 
 
 We start with mentioning the version of the solidity that we are using and then write the actual contract. A smart contract has states, functions and events. 
@@ -143,26 +140,29 @@ Now that we have written the contract, the next step is to prepare for the deplo
 ## Deployment:
 
 Run following commands in terminal;
-
+```
 npm install dotenv --save
-touch .gitignore
 
+touch .gitignore
+```
 Now go ahead and create .env file at the base of your project. Open your .gitignore file and write .env there. 
 
 All the secrets and important keys related to your project will be stored in .env file and we can access this data whenever and wherever. In the gitignore file we simply write .env, it tells git to ignore that file from future commits. 
 
 Open the .env file you have just created. Add your MetaMask Private Key and Alchemy App HTTP URL there. Should be something like this. 
 
+```
 PRIVATE_KEY=YOUR-PRIVATE-KEY
-API_URL_KEY=YOUR-ALCHEMY-APP-URL
-API_KEY=YOUR-ALCHEMY-APP-KEY
 
+API_URL_KEY=YOUR-ALCHEMY-APP-URL
+
+API_KEY=YOUR-ALCHEMY-APP-KEY
+```
 We will update our hardhat config file to setup Rinkeby Deployment.
 
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
+```
 require('dotenv').config(); //all the key value pairs are being made available due to this lib
+
 require('@nomiclabs/hardhat-ethers');
  
 const {API_URL_KEY, PRIVATE_KEY} = process.env; //environment variables are being loaded here.
@@ -178,15 +178,15 @@ module.exports = {
     }
   }
 };
-
+```
 ### Writing Deployment Script:
 
 Now is the time to write the deployment script. Now, we will create a deploy.js file in the scripts folder and this file will contain all the logic for deployment. Before that we run the following command in the terminal. 
-
+```
 npm install --save-dev @nomiclabs/hardhat-ethers
-
+```
 deploy.js file;
-
+```
 const { ethers } = require("hardhat");
 async function main() {
  
@@ -202,18 +202,18 @@ main().then(() => process.exit(0))
  console.error(error);
  process.exit(1);
 });
-
+```
  
 Run the following command in terminal.
-
+```
 npx hardhat run scripts/deploy.js --network rinkeby
-
+```
 If all goes well, your contract will be deployed and you will be able to see the address of the contract on the terminal. Copy that and save in your .env file, we will use it later to interact with the contract.  
 
 ### Interacting with the Deployed Contract.
 
 In the same scripts folder, create a new file interact.js. And add the following code.
-
+```
 const { ethers } = require("hardhat");
  
 const API_KEY = process.env.API_KEY; //get from alchemy
@@ -249,18 +249,18 @@ main()
   console.error(error);
   process.exit(1);
 });
-
+```
 Ether.js library gives us providers, which are basically the interface for our interaction with the Ethereum Blockchain nodes. When a request is made, it is sent to multiple backends simultaneously. As responses from each backend are returned, they are checked that they agree. Once a quorum has been reached (i.e. enough of the backends agree), the response is provided to your application. 
 
 Signers is an abstraction of an ethereum account. The signers can be used to sign messages and transactions which can result in calling function, changing state variables etc. Here we are sharing our account private key, because we are the signers of this transaction. 
 
 Rest of the code is very much the same, we fetch the current value of the message and then replace it with the new one. Run the following command again but this time, we will call the interact.js file.
-
+```
 npx hardhat run scripts/interact.js --network rinkeby
-
-You will see something like this.
-
+```
+You will see something like this in terminal.
+```
 the message is Hello World! Bingo
 the new message is Good Bye, World!
-
+```
 ***********END***********
