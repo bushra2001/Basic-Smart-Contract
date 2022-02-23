@@ -9,15 +9,14 @@
 
 Sign up for your free account and get to create an app. 
 
-Environment - Staging
-Chain - Ethereum
-Network - Rinkeby
+- Environment - Staging
+- Chain - Ethereum
+- Network - Rinkeby
 
-**photo**
+![alt text](https://lh6.googleusercontent.com/Bb5Mjaz4jGyF-_e9RHFtSRnSO_0nZTEgN9IuMjhkFCGL0vTfnpTdAzqXnNTo2qktp0uiR3gKmcokgX1bssf0sF9p-J5PmJU6HL7srmTClorF_hQVvjNtKcBGb_1zQw2Pd_ihqW_N)
 
 API key and HTTP address is important, we will use it in our project later.
-
-**photo**
+![alt_text](https://lh3.googleusercontent.com/GCh8lNY9s3lIBMPUX9-HdalprHLxldLq5KDzrq_9UmZXR1wixjsFIYv6JaBmFGN9pCY0vI4FrS8dLs_1HoxfHN2EUVrxCmkTGzI1_QCWH8gw-an-uCG9MU4WilBiJGzPKa54TTA3)
 
 ### Creating  MetaMask wallet 
 
@@ -43,6 +42,7 @@ Here are the steps to turn on test networks
 - Open Advanced
 - Scroll down to Show Test Networks
 - Turn on
+![alt_text](https://lh3.googleusercontent.com/J1aA9vZcf8gE3h9ypNI2nQ0-wRypnCCCwNBDHtc7C9qcyzlkbOmlb6IDUxxN1xIwQpfIwSPZrmXy-C5hS65lcFIKg5U0LZaXhGw_y2QxGurmhwZSHcJwK0gk5KCaUpu45pmz8jl2)
 
 ### Get some fake ETH:
 Try the following websites and try to get some fake ETHs. This fake money will be used for deploying your contract and doing transactions on your contract. This is not real money, you can’t buy NFTs, or other assets via these ETH.
@@ -54,6 +54,7 @@ All you have to do is to drop your public address on the following links and the
 
 ### Get your private MetaMask key:
 Open the metamask extension to find your private key. Donot share your private key with anyone.
+![alt_text](https://metaschool.s3-ap-southeast-1.amazonaws.com/images/Hrpx2AwPanh5OLiGRAV8U3AMBi8NMecZPCYuG8g5.png)
 
 ## Writing the Solidity Contract:
 
@@ -62,12 +63,21 @@ Open the metamask extension to find your private key. Donot share your private k
 
 Open terminal and run following commands.
 
-- mkdir Hello-World
-- cd Hello-World
-- ls
-- npm init --yes
-- npm install --save-dev hardhat
-- npx hardhat
+
+
+ mkdir Hello-World
+ 
+ cd Hello-World
+ 
+ ls
+ 
+ npm init --yes
+ 
+ npm install --save-dev hardhat
+ 
+ npx hardhat
+
+
 
 When you run the last command, you will get an option to create an Empty project with hardhat config. 
 copy the code
@@ -79,18 +89,26 @@ Now we will create two directories, contracts, scripts.
 The contracts directory will have all the contracts for the project and scripts directory will have all the deployments scripts and other stuff related to the project. By now the structure of your project will look something like this.
 
 HelloWorld
+
 > contracts
+
 > node_modules
+
 > scripts
+
 hardhat.config.js
+
 package-lock.json
+
 Package.json
 
 The contracts directory will have the contract of your Hello World. Create a HelloWorld.sol file in the contracts folder and write the following code. 
-` 
-pragma solidity >= 0.7.3;
+
+
  
-contract HelloWorld {
+ 
+    contract HelloWorld {
+    
     //events
     //states
     //functions
@@ -109,9 +127,10 @@ contract HelloWorld {
  
         emit messagechanged(oldmsg, newmesssage);
  
-    }
-}
-`
+    }}
+    
+
+
 We start with mentioning the version of the solidity that we are using and then write the actual contract. A smart contract has states, functions and events. 
 
 - The states are usually variables, tokens, NFTs whose state we want to maintain in the contract.
