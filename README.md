@@ -2,7 +2,7 @@
 
 ## Setting up the environment 
 
-1. Install and set up our metamask account. 
+1. Install and set up metamask account. 
 2. Create an alchemy app.
 
 ### Creating alchemy app:
